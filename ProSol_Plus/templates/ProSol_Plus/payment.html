@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+</head>
+<body>
+<h1>Payment Process....</h1>
+<h1>Don't refresh page...</h1>
+<form method="post" action="https://securegw-stage.paytm.in/order/process" name="paytm">
+    {% for keys,value in user.items %}
+    <input type="hidden" value="{{ value }}" name="{{ keys }}">
+    {% endfor %}
+
+</form>
+<script>
+    document.paytm.submit()
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'ProSol_Plus/base.html' %}
+{% load static %}
+
+
+
+{% block user %}
+<div class="limiter">
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">
+    <img src="{% static 'ProSol_Plus/images/brand.png'%}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    ProSol-Plus
+  </a>
+    <div class="col-sm-0">
+        <div class="col-sm-offset-4 float-left"><a href="/" class="text-primary">{{ email }}</a></div>
+    </div>
+</nav>
+	    <div class="container-login100" style="background-image: url('{% static 'ProSol_Plus/images/bg-01.jpg'%}');">
+        {% for i in user %}
+            <div class="alert alert-success" role="alert">
+            Payment Success!
+            </div>
+            <object data="/media/{{ i.file}}" width="100%" height="400px" ></object><br>
+            <a href="/media/{{ i.file}}" download><button class="btn btn-secondary btn-lg container" style="margin-top: 10%">Download</button> </a>
+
+            {% endfor %}
+
+
+		</div>
+
+	</div>
+
+{% endblock%}

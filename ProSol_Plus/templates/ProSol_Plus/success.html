@@ -1,0 +1,42 @@
+{% extends 'ProSol_Plus/base.html' %}
+{% load static %}
+
+
+
+{% block response %}
+<div class="limiter">
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">
+    <img src="{% static 'ProSol_Plus/images/brand.png'%}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    ProSol-Plus
+  </a>
+    <div class="col-sm-0">
+        <div class="col-sm-offset-4 float-left text-light"><a href="/" class="text-primary">{{ email }}</a></div>
+    </div>
+</nav>
+
+	    <div class="container-login100" style="background-image: url('{% static 'ProSol_Plus/images/bg-01.jpg'%}');">
+
+        {% for i in user %}
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<form class="login100-form validate-form" action="/userpage/{{ email }}/{{ i.id}}/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                            <div class="alert alert-{{ alert }}" role="alert">
+                                {{ msg }}
+                            </div>
+					<div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input"  name="myfile"  aria-describedby="inputGroupFileAddon04">
+                            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload</button>
+                        </div>
+                    </div>
+                    <a href="/solution/{{ email }}/{{ i.id }}/"><button type="button" class="btn btn-secondary btn-lg container" style="margin-top: 10%">Solution</button></a>
+				</form>
+			</div>
+            {% endfor %}
+		</div>
+	</div>
+{% endblock%}
